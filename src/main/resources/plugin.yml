@@ -1,0 +1,4 @@
+name: WarpPlugin
+version: '1.0'
+main: de.Warp.Main
+api-version: '1.21'
