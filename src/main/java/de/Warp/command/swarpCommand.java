@@ -28,7 +28,14 @@ public class swarpCommand extends BaseCommand {
 
 
     public swarpCommand(PaperCommandManager manager) {
+        manager.getCommandCompletions().registerCompletion("swarps", c -> {
+            List<String> tempswarpNames = dbm.getAllValues(tableName, "name");
 
+
+
+
+            return tempswarpNames;
+        });
     }
 
 
@@ -66,6 +73,7 @@ public class swarpCommand extends BaseCommand {
 
     @Subcommand("delete")
     @CommandPermission("be.swarp.delete")
+    @CommandCompletion("@swarps")
     public void onDelete(Player player, String swarpName) {
         String key = Main.createDBKey(player, swarpName);
         int x = dbm.getInt(tableName, key, "x", 0);

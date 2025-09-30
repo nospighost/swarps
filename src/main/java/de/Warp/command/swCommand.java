@@ -22,21 +22,12 @@ public class swCommand extends BaseCommand {
     public swCommand(PaperCommandManager manager, DBM dbm){
         this.dbm = dbm;
         manager.getCommandCompletions().registerCompletion("swarps", c -> {
-            List<Object> tempswarpNames = dbm.getAllValues(tableName, "name");
-            List<String> swarpNames = new ArrayList<>();
-            if (tempswarpNames.isEmpty()) {
-                for (Player player: Bukkit.getOnlinePlayers()){
-                    player.sendMessage("Empty");
-                }
-            } else {
-                for (Object obj : tempswarpNames) {
-                    if (obj != null) swarpNames.add(obj.toString());
-                }
-            }
+            List<String> tempswarpNames = dbm.getAllValues(tableName, "name");
 
 
 
-            return swarpNames;
+
+            return tempswarpNames;
         });
 
 
