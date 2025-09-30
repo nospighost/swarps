@@ -76,6 +76,12 @@ public class swarpCommand extends BaseCommand {
     @CommandCompletion("@swarps")
     public void onDelete(Player player, String swarpName) {
         String key = Main.createDBKey(player, swarpName);
+
+        if(!dbm.getString(tableName, key, "owner", null).equals(player.getName()) && !player.hasPermission("be.swarp.delete.others") && !player.isOp()){
+            player.sendMessage(Main.prefix + "§cDu bist nicht der Besitzer dieses Swarps!");
+            return;
+        }
+
         int x = dbm.getInt(tableName, key, "x", 0);
         int y = dbm.getInt(tableName, key, "y", 0);
         int z = dbm.getInt(tableName, key, "z", 0);

@@ -5,6 +5,7 @@ import co.aikar.commands.PaperCommandManager;
 import co.aikar.commands.annotation.CommandAlias;
 import co.aikar.commands.annotation.CommandCompletion;
 import co.aikar.commands.annotation.CommandPermission;
+import co.aikar.commands.annotation.Name;
 import de.Main.database.DBM;
 import de.Warp.Main;
 import org.bukkit.Bukkit;
@@ -36,7 +37,7 @@ public class swCommand extends BaseCommand {
     @CommandAlias("sw")
     @CommandPermission("be.sw")
     @CommandCompletion("@swarps")
-    public void onDefault(Player player, String name){
+    public void onDefault(Player player, @Name("swarp Name") String name){
 
         int x = dbm.getInt(tableName, Main.createDBKey(player, name), "x", 0);
         int y = dbm.getInt(tableName, Main.createDBKey(player, name), "y", 0);
