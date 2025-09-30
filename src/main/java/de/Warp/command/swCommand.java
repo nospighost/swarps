@@ -24,10 +24,6 @@ public class swCommand extends BaseCommand {
         this.dbm = dbm;
         manager.getCommandCompletions().registerCompletion("swarps", c -> {
             List<String> tempswarpNames = dbm.getAllValues(tableName, "name");
-
-
-
-
             return tempswarpNames;
         });
 
